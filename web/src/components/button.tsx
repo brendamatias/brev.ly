@@ -34,7 +34,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <button className={buttonVariants({ theme, className })} {...props}>
-      {icon && <Icon name={icon} size="sm" />}
+      {icon && <Icon name={icon} size="sm" className="text-gray-600" />}
       {children}
     </button>
   );

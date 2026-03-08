@@ -3,7 +3,7 @@ import type { IconType } from "./icon/icons";
 import { Button } from "./button";
 
 type IconButtonProps = ComponentProps<"button"> & {
-  icon?: IconType;
+  icon: IconType;
 };
 
 export function IconButton({ icon, ...props }: IconButtonProps) {
