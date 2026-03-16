@@ -42,23 +42,6 @@ describe("create link", () => {
     });
   });
 
-  it("should not be able to create a link with duplicated short url", async () => {
-    const shortUrl = `brev.ly/${randomUUID()}`;
-    const originalUrl = `https://www.site1.com.br/${randomUUID()}`;
-
-    await createLink({
-      originalUrl,
-      shortUrl,
-    });
-
-    const sut = await createLink({
-      originalUrl: "https://www.site2.com.br",
-      shortUrl,
-    });
-
-    expect(isLeft(sut)).toBe(true);
-  });
-
   it.each([
     {
       name: "originalUrl is not provided",

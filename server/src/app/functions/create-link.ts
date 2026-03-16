@@ -2,20 +2,14 @@ import { z } from "zod";
 import { db } from "@/infra/db";
 import { schema } from "@/infra/db/schemas";
 import { type Either, makeRight, makeLeft } from "@/infra/shared/either";
-import { createLinkSchema } from "@/schemas/link";
+import { LinkOutput, createLinkSchema } from "@/schemas/link";
 import { LinkAlreadyExistsError } from "./errors/link-already-exists";
 import { PostgresError } from "postgres";
 
 type CreateLinkInput = z.input<typeof createLinkSchema>;
 
 export type CreateLinkOutput = {
-  link: {
-    id: string;
-    originalUrl: string;
-    shortUrl: string;
-    accessCount: number;
-    createdAt: Date;
-  };
+  link: LinkOutput;
 };
 
 export async function createLink(
@@ -41,7 +35,6 @@ export async function createLink(
 
     return makeRight({ link });
   } catch (error) {
-    console.log(">>> error", error);
     if (error instanceof PostgresError && error.code === "23505") {
       return makeLeft(new LinkAlreadyExistsError());
     }
