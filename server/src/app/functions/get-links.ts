@@ -4,6 +4,7 @@ import { db } from "@/infra/db";
 import { schema } from "@/infra/db/schemas";
 import { type Either, makeRight } from "@/infra/shared/either";
 import { LinkOutput } from "@/schemas/link";
+import { PaginationOutput } from "@/schemas/pagination";
 
 const getLinksInput = z.object({
   searchQuery: z.string().optional(),
@@ -16,8 +17,8 @@ const getLinksInput = z.object({
 type GetLinksInput = z.input<typeof getLinksInput>;
 
 type GetLinksOutput = {
-  links: LinkOutput[];
-  total: number;
+  pagination: PaginationOutput;
+  data: LinkOutput[];
 };
 
 export async function getLinks(
@@ -61,5 +62,5 @@ export async function getLinks(
       .where(where),
   ]);
 
-  return makeRight({ links, total });
+  return makeRight({ data: links, pagination: { page, pageSize, total } });
 }

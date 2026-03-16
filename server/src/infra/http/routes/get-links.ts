@@ -3,6 +3,7 @@ import { z } from "zod";
 import { getLinks } from "@/app/functions/get-links";
 import { unwrapEither } from "@/infra/shared/either";
 import { getLinksSchema } from "@/schemas/link";
+import { paginationSchema } from "@/schemas/pagination";
 
 export const getLinksRoute: FastifyPluginAsyncZod = async (server) => {
   server.get(
@@ -20,8 +21,8 @@ export const getLinksRoute: FastifyPluginAsyncZod = async (server) => {
         }),
         response: {
           200: z.object({
-            links: z.array(getLinksSchema),
-            total: z.number(),
+            data: z.array(getLinksSchema),
+            pagination: paginationSchema,
           }),
         },
       },
@@ -38,9 +39,9 @@ export const getLinksRoute: FastifyPluginAsyncZod = async (server) => {
         sortDirection,
       });
 
-      const { total, links } = unwrapEither(result);
+      const { data, pagination } = unwrapEither(result);
 
-      return reply.status(200).send({ total, links });
+      return reply.status(200).send({ data, pagination });
     }
   );
 };
