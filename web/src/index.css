@@ -35,3 +35,25 @@
   --text-xs--line-height: 0.875rem;
   --text-xs--font-weight: 400;
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-blue-base);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-blue-base) transparent;
+}

@@ -1,6 +1,6 @@
 import { useId, type ComponentProps } from "react";
-import { Icon } from "./icon";
 import { cn } from "@/utils/tailwind";
+import { WarningIcon } from "@phosphor-icons/react";
 
 type InputProps = ComponentProps<"input"> & {
   label: string;
@@ -43,11 +43,7 @@ export function Input({ id, label, error, className, ...props }: InputProps) {
 
       {error && (
         <div id={errorId} role="alert" className="flex items-center gap-2">
-          <Icon
-            name="warning"
-            className="text-feedback-danger"
-            aria-hidden="true"
-          />
+          <WarningIcon className="text-feedback-danger" aria-hidden="true" />
           <span className="text-sm text-gray-500">{error}</span>
         </div>
       )}
