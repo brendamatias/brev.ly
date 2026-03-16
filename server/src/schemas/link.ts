@@ -13,4 +13,14 @@ export const getLinksSchema = z.object({
   createdAt: z.date(),
 });
 
+export const deleteLinkSchema = z.object({
+  id: z.uuid(),
+});
+
+export const getLinkByShortUrlSchema = z.object({
+  shortUrl: z.string(),
+});
+
+export const incrementLinkAccessSchema = getLinkByShortUrlSchema;
+
 export type LinkOutput = z.input<typeof getLinksSchema>;
