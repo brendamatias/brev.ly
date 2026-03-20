@@ -5,9 +5,17 @@ import { WarningIcon } from "@phosphor-icons/react";
 type InputProps = ComponentProps<"input"> & {
   label: string;
   error?: string;
+  prefix?: string;
 };
 
-export function Input({ id, label, error, className, ...props }: InputProps) {
+export function Input({
+  id,
+  label,
+  error,
+  className,
+  prefix,
+  ...props
+}: InputProps) {
   const generatedId = useId();
   const inputId = id ?? generatedId;
   const errorId = `${inputId}-error`;
@@ -26,20 +34,27 @@ export function Input({ id, label, error, className, ...props }: InputProps) {
         {label}
       </label>
 
-      <input
-        id={inputId}
-        {...props}
-        aria-invalid={!!error}
-        aria-describedby={error ? errorId : undefined}
+      <div
         className={cn(
-          "caret-blue-base h-12 rounded-lg border px-4 py-2 text-md font-normal text-gray-600 outline-none",
-          "focus:border-[1.5px]",
+          "flex items-center h-12 rounded-lg border px-4 text-md font-normal text-gray-600",
+          "focus-within:border-[1.5px]",
           error
             ? "border-[1.5px] border-feedback-danger"
-            : "border-gray-300 focus:border-blue-base",
-          className
+            : "border-gray-300 focus-within:border-blue-base"
         )}
-      />
+      >
+        {prefix && (
+          <span className="text-gray-400 mr-1 whitespace-nowrap">{prefix}</span>
+        )}
+
+        <input
+          id={inputId}
+          {...props}
+          aria-invalid={!!error}
+          aria-describedby={error ? errorId : undefined}
+          className={cn("flex-1 bg-transparent outline-none", className)}
+        />
+      </div>
 
       {error && (
         <div id={errorId} role="alert" className="flex items-center gap-2">

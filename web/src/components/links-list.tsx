@@ -12,7 +12,7 @@ export function LinksList() {
   return (
     <div className="bg-gray-100 md:p-8 p-6 rounded-lg flex flex-col md:gap-5 gap-4 w-full self-start relative overflow-hidden">
       {isLoading && (
-        <div className="absolute top-0 left-0 w-full h-[2px]">
+        <div className="absolute top-0 left-0 w-full h-0.5">
           <motion.div
             className="absolute top-0 h-full w-40 bg-blue-base"
             initial={{ left: "-10rem" }}

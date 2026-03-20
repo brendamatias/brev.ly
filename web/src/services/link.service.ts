@@ -22,6 +22,10 @@ const getByShortUrl = (shortUrl: string): Promise<Link> => {
   return api.get(`${DOMAIN}/${shortUrl}`);
 };
 
+const create = (payload: CreateLinkRequest): Promise<void> => {
+  return api.post(DOMAIN, payload);
+};
+
 const destroy = (id: string): Promise<void> => {
   return api.delete(`${DOMAIN}/${id}`);
 };
@@ -29,6 +33,7 @@ const destroy = (id: string): Promise<void> => {
 const LinkService = {
   get,
   getByShortUrl,
+  create,
   destroy,
 };
 

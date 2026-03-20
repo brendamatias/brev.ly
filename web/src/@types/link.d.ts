@@ -5,3 +5,8 @@ type Link = {
   accessCount: number;
   createdAt: string;
 };
+
+type CreateLinkRequest = {
+  originalUrl: string;
+  shortUrl: string;
+};
