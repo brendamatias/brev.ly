@@ -9,14 +9,21 @@ const buttonVariants = tv({
   variants: {
     theme: {
       primary:
-        "text-md h-12 justify-center rounded-lg bg-blue-base text-white hover:bg-blue-dark w-full px-5",
+        "justify-center bg-blue-base text-white hover:bg-blue-dark w-full",
       secondary:
-        "text-sm font-semibold h-8 rounded-sm bg-gray-200 text-gray-500 border border-transparent hover:border-blue-base px-2",
+        "font-semibold bg-gray-200 text-gray-500 border border-transparent hover:border-blue-base",
+    },
+
+    size: {
+      md: "h-12 px-5 text-md rounded-lg",
+      sm: "h-8 px-2 text-sm rounded-sm",
+      icon: "h-10 w-10 rounded-md p-0 flex items-center justify-center",
     },
   },
 
   defaultVariants: {
     theme: "primary",
+    size: "md",
   },
 });
 
@@ -30,10 +37,11 @@ export function Button({
   className,
   icon,
   children,
+  size,
   ...props
 }: ButtonProps) {
   return (
-    <button className={buttonVariants({ theme, className })} {...props}>
+    <button className={buttonVariants({ theme, className, size })} {...props}>
       {icon && <Icon name={icon} size="sm" className="text-gray-600" />}
       {children}
     </button>

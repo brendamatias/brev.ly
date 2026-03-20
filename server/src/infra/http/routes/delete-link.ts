@@ -5,7 +5,7 @@ import { isLeft } from "@/infra/shared/either";
 
 export const deleteLinkRoute: FastifyPluginAsyncZod = async (server) => {
   server.delete(
-    "/links",
+    "/links/:id",
     {
       schema: {
         summary: "Delete a link",

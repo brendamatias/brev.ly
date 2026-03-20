@@ -18,7 +18,7 @@ export const useCreateLink = () => {
   });
 };
 
-export const useDeleteLink = () => {
+export const useDeleteLink = (onSuccess?: () => void) => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -29,6 +29,8 @@ export const useDeleteLink = () => {
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["links"] });
+      toast.success("Link deletado com sucesso!");
+      onSuccess?.();
     },
   });
 };

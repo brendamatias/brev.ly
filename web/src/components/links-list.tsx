@@ -28,7 +28,12 @@ export function LinksList() {
 
       <div className="flex justify-between gap-4 items-center">
         <h1 className="text-lg text-gray-600">Meus links</h1>
-        <Button icon="downloadSimple" theme="secondary" disabled={isLoading}>
+        <Button
+          icon="downloadSimple"
+          theme="secondary"
+          size="sm"
+          disabled={isLoading}
+        >
           Baixar CSV
         </Button>
       </div>

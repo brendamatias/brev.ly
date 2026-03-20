@@ -8,6 +8,12 @@ type IconButtonProps = ComponentProps<"button"> & {
 
 export function IconButton({ icon, ...props }: IconButtonProps) {
   return (
-    <Button theme="secondary" {...props} icon={icon} className="w-8 h-8" />
+    <Button
+      theme="secondary"
+      {...props}
+      icon={icon}
+      size="icon"
+      className="w-8 h-8"
+    />
   );
 }
