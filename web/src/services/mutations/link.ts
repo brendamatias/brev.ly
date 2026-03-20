@@ -14,6 +14,7 @@ export const useCreateLink = () => {
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["links"] });
+      toast.success("Link criado com sucesso!");
     },
   });
 };

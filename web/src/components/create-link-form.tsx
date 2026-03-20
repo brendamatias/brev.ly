@@ -32,7 +32,7 @@ export function CreateLinkForm() {
     },
   });
 
-  const { mutateAsync } = useCreateLink();
+  const { mutateAsync, isPending } = useCreateLink();
 
   const onSubmit = async (data: CreateLinkFormData) => {
     await mutateAsync({
@@ -41,7 +41,6 @@ export function CreateLinkForm() {
     });
 
     reset();
-    toast.success("Link criado com sucesso!");
   };
 
   return (
@@ -64,7 +63,7 @@ export function CreateLinkForm() {
           error={errors?.shortUrl?.message}
         />
 
-        <Button className="mt-1" type="submit">
+        <Button className="mt-1" type="submit" loading={isPending}>
           Salvar link
         </Button>
       </form>
