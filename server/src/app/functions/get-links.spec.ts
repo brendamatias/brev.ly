@@ -31,8 +31,8 @@ describe("get links", () => {
 
     expect(isRight(sut)).toBe(true);
 
-    expect(unwrapEither(sut).total).toEqual(5);
-    expect(unwrapEither(sut).links).toEqual([
+    expect(unwrapEither(sut).pagination.total).toEqual(5);
+    expect(unwrapEither(sut).data).toEqual([
       expect.objectContaining({ id: link5.id }),
       expect.objectContaining({ id: link4.id }),
       expect.objectContaining({ id: link3.id }),
@@ -67,8 +67,8 @@ describe("get links", () => {
     });
 
     expect(isRight(sut)).toBe(true);
-    expect(unwrapEither(sut).total).toEqual(5);
-    expect(unwrapEither(sut).links).toEqual([
+    expect(unwrapEither(sut).pagination.total).toEqual(5);
+    expect(unwrapEither(sut).data).toEqual([
       expect.objectContaining({ id: link5.id }),
       expect.objectContaining({ id: link4.id }),
       expect.objectContaining({ id: link3.id }),
@@ -81,8 +81,8 @@ describe("get links", () => {
     });
 
     expect(isRight(sut)).toBe(true);
-    expect(unwrapEither(sut).total).toEqual(5);
-    expect(unwrapEither(sut).links).toEqual([
+    expect(unwrapEither(sut).pagination.total).toEqual(5);
+    expect(unwrapEither(sut).data).toEqual([
       expect.objectContaining({ id: link2.id }),
       expect.objectContaining({ id: link1.id }),
     ]);
@@ -119,8 +119,8 @@ describe("get links", () => {
     });
 
     expect(isRight(sut)).toBe(true);
-    expect(unwrapEither(sut).total).toEqual(5);
-    expect(unwrapEither(sut).links).toEqual([
+    expect(unwrapEither(sut).pagination.total).toEqual(5);
+    expect(unwrapEither(sut).data).toEqual([
       expect.objectContaining({ id: link1.id }),
       expect.objectContaining({ id: link2.id }),
       expect.objectContaining({ id: link3.id }),
@@ -135,8 +135,8 @@ describe("get links", () => {
     });
 
     expect(isRight(sut)).toBe(true);
-    expect(unwrapEither(sut).total).toEqual(5);
-    expect(unwrapEither(sut).links).toEqual([
+    expect(unwrapEither(sut).pagination.total).toEqual(5);
+    expect(unwrapEither(sut).data).toEqual([
       expect.objectContaining({ id: link5.id }),
       expect.objectContaining({ id: link4.id }),
       expect.objectContaining({ id: link3.id }),
