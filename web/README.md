@@ -1,3 +1,11 @@
+## Como rodar o projeto
+
+- Clone o repositório `git clone https://github.com/brendamatias/brev.ly`;
+- Mova-se para diretório da aplicação: `cd brev.ly`;
+- Execute `npm install`;
+- Inicie a aplicação `npm run dev`
+- Acesse: http://localhost:5173 🚀
+
 ## Requisitos
 
 - [x] Deve ser possível criar um link

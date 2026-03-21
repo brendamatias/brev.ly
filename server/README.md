@@ -1,9 +1,22 @@
-## Getting Started
+## Como começar
 
-To start the project using Docker, run:
+Se quiser rodar o projeto com Docker:
 
 ```bash
 docker compose up -d
+```
+
+Se quiser rodar localmente:
+
+```
+npm install
+npm run dev
+```
+
+Se quiser rodar os testes:
+
+```
+npm run test
 ```
 
 ## Requisitos
