@@ -18,7 +18,7 @@ const get = ({
   return api.get(`${DOMAIN}?${params.toString()}`);
 };
 
-const getByShortUrl = (shortUrl: string): Promise<Link> => {
+const getByShortUrl = (shortUrl: string): Promise<LinkByShortUrl> => {
   return api.get(`${DOMAIN}/${shortUrl}`);
 };
 

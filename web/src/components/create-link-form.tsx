@@ -35,10 +35,7 @@ export function CreateLinkForm() {
   const { mutateAsync, isPending } = useCreateLink();
 
   const onSubmit = async (data: CreateLinkFormData) => {
-    await mutateAsync({
-      ...data,
-      shortUrl: `brev.ly/${data.shortUrl}`,
-    });
+    await mutateAsync(data);
 
     reset();
   };

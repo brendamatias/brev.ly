@@ -20,3 +20,14 @@ export const useLinks = ({
       ),
   });
 };
+
+export const useLinkByShortUrl = (shortUrl: string) => {
+  return useQuery({
+    queryKey: ["link", shortUrl],
+    queryFn: () =>
+      LinkService.getByShortUrl(shortUrl).catch((error) => {
+        toast.error(error);
+        throw error;
+      }),
+  });
+};

@@ -9,13 +9,15 @@ export const getLinkRoute: FastifyPluginAsyncZod = async (server) => {
     "/links/:shortUrl",
     {
       schema: {
-        summary: "Redirect to original URL",
+        summary: "Get original URL by short URL",
         tags: ["links"],
         params: z.object({
           shortUrl: z.string(),
         }),
         response: {
-          302: z.null(),
+          200: z.object({
+            originalUrl: z.string(),
+          }),
           404: z.object({
             message: z.string(),
           }),
@@ -43,9 +45,12 @@ export const getLinkRoute: FastifyPluginAsyncZod = async (server) => {
       }
 
       const { link } = unwrapEither(result);
+
       await incrementLinkAccess({ shortUrl });
 
-      return reply.redirect(link.originalUrl);
+      return reply.status(200).send({
+        originalUrl: link.originalUrl,
+      });
     }
   );
 };

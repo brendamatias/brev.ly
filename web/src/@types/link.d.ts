@@ -6,6 +6,10 @@ type Link = {
   createdAt: string;
 };
 
+type LinkByShortUrl = {
+  originalUrl: string;
+};
+
 type CreateLinkRequest = {
   originalUrl: string;
   shortUrl: string;
