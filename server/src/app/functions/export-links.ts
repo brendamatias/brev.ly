@@ -26,8 +26,8 @@ export async function exportLinks(
   const { sql, params } = db
     .select({
       id: schema.links.id,
-      shortUrl: schema.links.shortUrl,
       originalUrl: schema.links.originalUrl,
+      shortUrl: schema.links.shortUrl,
       accessCount: schema.links.accessCount,
       createdAt: schema.links.createdAt,
     })
@@ -44,9 +44,9 @@ export async function exportLinks(
     header: true,
     columns: [
       { key: "id", header: "ID" },
-      { key: "originalUrl", header: "Original URL" },
-      { key: "shortUrl", header: "Short URL" },
-      { key: "accessCount", header: "Access Count" },
+      { key: "original_url", header: "Original URL" },
+      { key: "short_url", header: "Short URL" },
+      { key: "access_count", header: "Access Count" },
       { key: "created_at", header: "Created at" },
     ],
   });

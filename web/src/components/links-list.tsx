@@ -2,12 +2,27 @@ import { LinkIcon, SpinnerIcon } from "@phosphor-icons/react";
 import { Button } from "./button";
 import { LinkItem } from "./link-item";
 import { motion } from "framer-motion";
-import { useLinks } from "@/services";
+import { useCreateLinkExports, useLinks } from "@/services";
 
 export function LinksList() {
   const { data, isPending, isFetching } = useLinks({ page: 1, pageSize: 10 });
+  const { mutateAsync, isPending: mutatePending } = useCreateLinkExports();
 
   const isLoading = isPending || isFetching;
+
+  async function downloadCSV() {
+    const { reportUrl } = await mutateAsync();
+
+    const fileName = reportUrl.split("/").pop() || "download.csv";
+
+    const a = document.createElement("a");
+    a.href = reportUrl;
+    a.download = fileName;
+
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
 
   return (
     <div className="bg-gray-100 md:p-8 p-6 rounded-lg flex flex-col md:gap-5 gap-4 w-full self-start relative overflow-hidden">
@@ -33,6 +48,8 @@ export function LinksList() {
           theme="secondary"
           size="sm"
           disabled={isLoading}
+          onClick={downloadCSV}
+          loading={mutatePending}
         >
           Baixar CSV
         </Button>

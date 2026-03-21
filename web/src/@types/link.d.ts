@@ -10,3 +10,7 @@ type CreateLinkRequest = {
   originalUrl: string;
   shortUrl: string;
 };
+
+type CreateLinkExportsResponse = {
+  reportUrl: string;
+};

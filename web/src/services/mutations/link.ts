@@ -35,3 +35,16 @@ export const useDeleteLink = (onSuccess?: () => void) => {
     },
   });
 };
+
+export const useCreateLinkExports = () => {
+  return useMutation({
+    mutationFn: () =>
+      LinkService.exports().catch((error) => {
+        toast.error(error);
+        throw error;
+      }),
+    onSuccess: () => {
+      toast.success("Link baixado com sucesso!");
+    },
+  });
+};

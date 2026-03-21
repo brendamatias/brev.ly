@@ -30,11 +30,16 @@ const destroy = (id: string): Promise<void> => {
   return api.delete(`${DOMAIN}/${id}`);
 };
 
+const exports = (): Promise<CreateLinkExportsResponse> => {
+  return api.post(`${DOMAIN}/exports`);
+};
+
 const LinkService = {
   get,
   getByShortUrl,
   create,
   destroy,
+  exports,
 };
 
 export { LinkService };
