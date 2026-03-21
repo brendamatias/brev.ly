@@ -5,6 +5,7 @@ import { type Either, makeRight, makeLeft } from "@/infra/shared/either";
 import { LinkOutput, createLinkSchema } from "@/schemas/link";
 import { LinkAlreadyExistsError } from "./errors/link-already-exists";
 import { PostgresError } from "postgres";
+import { DrizzleQueryError } from "drizzle-orm";
 
 type CreateLinkInput = z.input<typeof createLinkSchema>;
 
@@ -35,8 +36,12 @@ export async function createLink(
 
     return makeRight({ link });
   } catch (error) {
-    if (error instanceof PostgresError && error.code === "23505") {
-      return makeLeft(new LinkAlreadyExistsError());
+    if (error instanceof DrizzleQueryError) {
+      const cause = error.cause;
+
+      if (cause instanceof PostgresError && cause.code === "23505") {
+        return makeLeft(new LinkAlreadyExistsError());
+      }
     }
 
     throw error;

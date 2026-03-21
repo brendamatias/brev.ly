@@ -1,5 +1,5 @@
 export class LinkNotFoundError extends Error {
   constructor() {
-    super("Link not found");
+    super("Link não encontrado");
   }
 }

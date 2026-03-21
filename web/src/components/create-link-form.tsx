@@ -36,7 +36,6 @@ export function CreateLinkForm() {
 
   const onSubmit = async (data: CreateLinkFormData) => {
     await mutateAsync(data);
-
     reset();
   };
 
