@@ -26,7 +26,7 @@ export const useLinkByShortUrl = (shortUrl: string) => {
     queryKey: ["link", shortUrl],
     queryFn: () =>
       LinkService.getByShortUrl(shortUrl).catch((error) => {
-        toast.error(error);
+        window.location.href = "/link/not-found";
         throw error;
       }),
   });

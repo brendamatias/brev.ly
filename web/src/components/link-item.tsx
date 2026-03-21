@@ -17,10 +17,11 @@ export function LinkItem({
   accessCount,
 }: LinkItemProps) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const shortUrlFormatted = `${import.meta.env.VITE_APP_URL}/${shortUrl}`;
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(shortUrl);
+      await navigator.clipboard.writeText(shortUrlFormatted);
 
       toast.success("Link copiado com sucesso!");
     } catch (error) {
@@ -37,7 +38,7 @@ export function LinkItem({
             target="_blank"
             className="text-md text-blue-base truncate"
           >
-            {import.meta.env.VITE_APP_URL}/{shortUrl}
+            {shortUrlFormatted}
           </a>
 
           <span className="text-gray-500 text-sm truncate">{originalUrl}</span>
