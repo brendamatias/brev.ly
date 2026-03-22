@@ -12,7 +12,7 @@ const get = ({
 
   if (page) params.append("page", String(page));
   if (pageSize) params.append("pageSize", String(pageSize));
-  if (searchQuery) params.append("search", searchQuery);
+  if (searchQuery) params.append("searchQuery", searchQuery);
   if (sortBy) params.append("sortBy", sortBy);
 
   return api.get(`${DOMAIN}?${params.toString()}`);

@@ -37,7 +37,7 @@ export async function exportLinks(
     )
     .toSQL();
 
-  const cursor = pg.unsafe(sql, params as string[]).cursor(2);
+  const cursor = pg.unsafe(sql, params as string[]).cursor(500);
 
   const csv = stringify({
     delimiter: ",",
